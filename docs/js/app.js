@@ -106,7 +106,6 @@ this.MoonRotD=0.0033;
     var loaderMoon = new THREE.TextureLoader();
     var textureMoon = loaderPhoto.load( './img/Moon.png');
     var materialMoon = new THREE.MeshLambertMaterial({ map:textureMoon, side:THREE.DoubleSide });
-//    var materialMoon = new THREE.MeshLambertMaterial({ color: 0xEEEEEE, side:THREE.DoubleSide });
     var geometryMoon = new THREE.SphereGeometry(this.EarthSize/4,64,64);
     this.meshMoon = new THREE.Mesh( geometryMoon, materialMoon );
     this.meshMoon.position.set( 0,0,100+8);
