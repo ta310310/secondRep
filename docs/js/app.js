@@ -54,30 +54,31 @@ var SpaceSize = 1000
 
 var fps = 29.97;//1000 / 30;
 
-this.EarthRag = 180;
-this.EarthRagD= 0.001;
+this.EarthRag = 89.5;
+this.EarthRagD= 0.0003;
 this.EarthX=0;
 this.EarthY=0;
 this.EarthZ=0;
 this.EarthD= 10;
 this.EarthSize = 1
+this.EarthRotD = 0.1
 
 this.MoonRag = 0;
-this.MoonRagD= 0.033;
+this.MoonRagD= this.EarthRotD / 27.3;//0.033;
 this.MoonX=0;
 this.MoonY=0;
 this.MoonZ=0;
 this.MoonD= 2;
 this.MoonRot=0;
-this.MoonRotD=0.0033;
+this.MoonRotD=  this.EarthRotD / 29.5 ;//0.0033;
 
 
-//	this.camera = new THREE.PerspectiveCamera(40, window.innerWidth / window.innerHeight, 0.1, 10000 );
-//	this.camera.position.set( 0, 0, 0 );
+	this.camera = new THREE.PerspectiveCamera(100, window.innerWidth / window.innerHeight, 0.1, 1001 );
+	this.camera.position.set( 0, 0, 0 );
 
     var light = new THREE.DirectionalLight(0xFFFFFF);
 //    light.position.set(1.0, 1.0, 1.0);
-    light.position.set(0, 0, 0);
+    light.position.set(0, 1, 0);
     this.scene.add( light );
 
 	var ambientLight = new THREE.AmbientLight(0x888888);
@@ -86,7 +87,7 @@ this.MoonRotD=0.0033;
 //    this.scenePhoto = new THREE.Scene();
     var loaderPhoto = new THREE.TextureLoader();
     var texturePhoto = loaderPhoto.load( './img/starfield.jpg');
-    var materialPhoto = new THREE.MeshLambertMaterial({ map:texturePhoto, side:THREE.DoubleSide });
+    var materialPhoto = new THREE.MeshLambertMaterial({ map:texturePhoto, side:THREE.BackSide });
     var geometryPhoto = new THREE.SphereGeometry(SpaceSize,64,64);
     this.meshPhoto = new THREE.Mesh( geometryPhoto, materialPhoto );
     this.meshPhoto.position.set( 0,0,0);
@@ -98,7 +99,7 @@ this.MoonRotD=0.0033;
     var materialEarth = new THREE.MeshLambertMaterial({ map:textureEarth, side:THREE.DoubleSide });
     var geometryEarth = new THREE.SphereGeometry(this.EarthSize,64,64);
     this.meshEarth = new THREE.Mesh( geometryEarth, materialEarth );
-    this.meshEarth.position.set( 0,50,100);
+    this.meshEarth.position.set( 0,0,0);
     this.scene.add( this.meshEarth );
 
 //Ç¬Å™Ç´Å´
@@ -108,7 +109,7 @@ this.MoonRotD=0.0033;
     var materialMoon = new THREE.MeshLambertMaterial({ map:textureMoon, side:THREE.DoubleSide });
     var geometryMoon = new THREE.SphereGeometry(this.EarthSize/4,64,64);
     this.meshMoon = new THREE.Mesh( geometryMoon, materialMoon );
-    this.meshMoon.position.set( 0,0,100+8);
+    this.meshMoon.position.set( 0,0,0);
     this.scene.add( this.meshMoon );
 
 
