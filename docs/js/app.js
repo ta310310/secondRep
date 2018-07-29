@@ -60,17 +60,17 @@ this.EarthX=0;
 this.EarthY=0;
 this.EarthZ=0;
 this.EarthD= 10;
-this.EarthSize = 1
-this.EarthRotD = 0.1
+this.EarthSize = 2
+this.EarthRotD = 0.001;//Ž©“]‘¬“x
 
 this.MoonRag = 0;
-this.MoonRagD= this.EarthRotD / 27.3;//0.033;
+this.MoonRagD= this.EarthRotD / 27.3;//Œö“]ŽüŠú
 this.MoonX=0;
 this.MoonY=0;
 this.MoonZ=0;
-this.MoonD= 2;
+this.MoonD= 3;
 this.MoonRot=0;
-this.MoonRotD=  this.EarthRotD / 29.5 ;//0.0033;
+this.MoonRotD=  this.EarthRotD / 29.5 ;//ŒŽ‚Ì–ž‚¿Œ‡‚¯ŽüŠú
 
 
 	this.camera = new THREE.PerspectiveCamera(100, window.innerWidth / window.innerHeight, 0.1, 1001 );
@@ -102,6 +102,15 @@ this.MoonRotD=  this.EarthRotD / 29.5 ;//0.0033;
     this.meshEarth.position.set( 0,0,0);
     this.scene.add( this.meshEarth );
 
+//‚¿‚«‚¤‚Ì‚­‚à
+    var loaderCloud = new THREE.TextureLoader();
+    var textureCloud = loaderPhoto.load( './img/Cloud.png');
+    var materialCloud = new THREE.MeshLambertMaterial({ map:textureCloud, transparent:true  });
+    var geometryCloud = new THREE.SphereGeometry(this.EarthSize+this.EarthSize/200,64,64);
+    this.meshCloud = new THREE.Mesh( geometryCloud, materialCloud );
+    this.meshCloud.position.set( 0,0,0);
+    this.scene.add( this.meshCloud );
+
 //‚Âª‚««
 
     var loaderMoon = new THREE.TextureLoader();
@@ -123,9 +132,14 @@ this.MoonRotD=  this.EarthRotD / 29.5 ;//0.0033;
     	this.EarthZ = Math.sin(this.EarthRag)*this.EarthD;
 	    this.meshEarth.position.set( this.EarthX , this.EarthY , this.EarthZ );
     	this.meshEarth.rotation.set(0,
-    							this.meshEarth.rotation.y -= 0.01,
+    							this.meshEarth.rotation.y -= this.EarthRotD,
     							0);
 
+
+	    this.meshCloud.position.set( this.EarthX , this.EarthY , this.EarthZ );
+    	this.meshCloud.rotation.set(0,
+    							this.meshCloud.rotation.y -= this.EarthRotD+this.EarthRotD/7,
+    							0);
 
     	this.MoonRag += this.MoonRagD;
     	if(this.MoonRag>=360)this.MoonRag=0;
