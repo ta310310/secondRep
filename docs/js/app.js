@@ -8,7 +8,7 @@ class App {
 	var SpaceSize = 1000
 	var fps = 29.97;//1000 / 30;
 	this.EarthRag = 89.5;
-	this.EarthRagD= 0.0003;
+	this.EarthRagD= 0.01;//0.0003;
 	this.EarthX=0;
 	this.EarthY=0;
 	this.EarthZ=0;
