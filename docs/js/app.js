@@ -8,7 +8,7 @@ class App {
 	var SpaceSize = 1000
 	var fps = 29.97;//1000 / 30;
 	this.EarthRag = 89.5;
-	this.EarthRagD= 0.01;//0.0003;
+	this.EarthRagD= 0.00001;//0.0003;
 	this.EarthX=0;
 	this.EarthY=0;
 	this.EarthZ=0;
@@ -46,7 +46,7 @@ class App {
 
 //ÇøÇ´Ç§
     var loaderEarth = new THREE.TextureLoader();
-    var textureEarth = loaderPhoto.load( './img/Earth.png');
+    var textureEarth = loaderPhoto.load( './img/earth.png');
     var materialEarth = new THREE.MeshLambertMaterial({ map:textureEarth, side:THREE.DoubleSide });
     var geometryEarth = new THREE.SphereGeometry(this.EarthSize,64,64);
     this.meshEarth = new THREE.Mesh( geometryEarth, materialEarth );
@@ -55,7 +55,7 @@ class App {
 
 //ÇøÇ´Ç§ÇÃÇ≠Ç‡
     var loaderCloud = new THREE.TextureLoader();
-    var textureCloud = loaderPhoto.load( './img/Cloud.png');
+    var textureCloud = loaderPhoto.load( './img/cloud.png');
     var materialCloud = new THREE.MeshLambertMaterial({ map:textureCloud, transparent:true  });
     var geometryCloud = new THREE.SphereGeometry(this.EarthSize+this.EarthSize/200,64,64);
     this.meshCloud = new THREE.Mesh( geometryCloud, materialCloud );
@@ -65,7 +65,7 @@ class App {
 //Ç¬Å™Ç´Å´
 
     var loaderMoon = new THREE.TextureLoader();
-    var textureMoon = loaderPhoto.load( './img/Moon.png');
+    var textureMoon = loaderPhoto.load( './img/moon.png');
     var materialMoon = new THREE.MeshLambertMaterial({ map:textureMoon, side:THREE.DoubleSide });
     var geometryMoon = new THREE.SphereGeometry(this.EarthSize/4,64,64);
     this.meshMoon = new THREE.Mesh( geometryMoon, materialMoon );
