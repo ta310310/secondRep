@@ -44,7 +44,7 @@ class App {
     this.meshPhoto.position.set( 0,0,0);
     this.scene.add( this.meshPhoto );
 
-//‚¿‚«‚¤
+//‚¿ª‚««‚¤«
     var loaderEarth = new THREE.TextureLoader();
     var textureEarth = loaderPhoto.load( './img/earth.png');
     var materialEarth = new THREE.MeshLambertMaterial({ map:textureEarth, side:THREE.DoubleSide });
